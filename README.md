@@ -15,16 +15,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * On the terminal, navigate to the project directory and run 'ng serve' on the terminal.
 * The live website can be found at https://koros99.github.io/GitHub-search
 
-##Dependencies
+## Dependencies
 Angular CLI
 
-##Tecnologies Used
+## Tecnologies Used
 1. Angular
 2. HTML
 3. CSS
 4. Bootstrap
 
-##Author and Contact Information
+## Author and Contact Information
 Written by [Victor Kilel] (https://github.com/koros99).
 Email: vickiekross99@gmail.com
 
