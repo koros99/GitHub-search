@@ -6,6 +6,7 @@ export class Profile {
     public bio: any,
     public repos: any,
     public followers: any,
-    public following: any
+    public following: any,
+    public link: any
     ){}
 }
