@@ -1,4 +1,4 @@
-# GithubSearch
+# GitHub-Search
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6. It is a web application that enables users to search for GitHub profiles and repositories. The user gets links to the profiles and repositories and can view them on GitHub.
 
