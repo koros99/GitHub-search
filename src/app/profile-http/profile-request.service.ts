@@ -6,16 +6,18 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ProfileRequestService {
   profile: Profile;
+  username: string;
 
   constructor(private http:HttpClient) {
-    this.profile = new Profile ("", "", "", "", "", "", "")
+    this.profile = new Profile ("", "", "", "", "", "", "", "")
   }
 
-  username: string = "";
+  newProfile(username: string){
+    this.username = username;
+  }
+
 
   getProfile(){
-  	// return this.http.get("https://api.github.com/users/" + this.username + "?client_id=" + this.clientid + "&client_secret=" + this.clientsecret)
-  	// .map(res => res.json());
     interface ApiResponse{
       login: string;
       name: string;
@@ -24,6 +26,7 @@ export class ProfileRequestService {
       followers: number;
       following: number;
       avatar_url: any;
+      html_url:any;
     }
     let promise = new Promise((resolve,reject)=>{
       this.http.get<ApiResponse>(environment.apiUrl + this.username + "?access_token" + environment.access_token).toPromise().then(response=>{
@@ -34,6 +37,7 @@ export class ProfileRequestService {
         this.profile.repos = response.public_repos
         this.profile.followers = response.followers
         this.profile.following = response.following
+        this.profile.link = response.html_url
 
         resolve();
       },
@@ -41,10 +45,10 @@ export class ProfileRequestService {
         this.profile.avatar = ""
         this.profile.username = "koros99"
         this.profile.name = "Victor Kilel"
-        this.profile.bio = ""
-        this.profile.repos = ""
-        this.profile.followers = ""
-        this.profile.following = ""
+        this.profile.bio = "Tech Developer"
+        this.profile.repos = 19
+        this.profile.followers = 0
+        this.profile.following = 1
 
         reject(error);
       })
