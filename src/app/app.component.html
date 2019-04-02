@@ -1,2 +1,9 @@
-<app-profile></app-profile>
-<router-outlet></router-outlet>
+<div class="container-fluid contents">
+  <nav class="navbar navbar-inverse bg-primary">
+    <div class="nav navbar-nav navbar-right">
+      <a routerLink='/profile' routerLinkActive='active'>Search Profile</a>
+      <a routerLink='/repos' routerLinkActive='active'>Search Repos</a>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
