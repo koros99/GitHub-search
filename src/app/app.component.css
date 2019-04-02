@@ -1,0 +1,7 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+.contents{
+  background-image: url("https://cdn.pixabay.com/photo/2014/05/02/21/47/workstation-336369_960_720.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
