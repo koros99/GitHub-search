@@ -1,23 +1,48 @@
-<form class="search-form">
-	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Search git users with username" [(ngModel)]="username" name="username" (keyup)="getProfile()">
-	</div>
-</form>
-<div *ngIf="profile">
-	 <div class="row">
-      <div class="col-md-4">
-        <img [src]="profile.avatar">
+<div class="container-fluid contents">
+  <div class="container search-form">
+    <form class="form-inline" (ngSubmit)="searchUser()">
+      <label class="sr-only" for="username">Username</label>
+      <input type="text" name="username" [(ngModel)]="searchName" class="form-control mb-2 mr-sm-2" id="username" placeholder="Search for users" required>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <div *ngIf="profile" class="row">
+      <div class="col-md-3">
+        <img src="{{profile.avatar}}" alt="User Avatar" width="90%">
       </div>
-      <div class="col-md-8">
+      <div class="col-md-5 card">
+          <h3>Repositories</h3>
+        <div card>
+          <div *ngFor='let repo of profileRepos' class="card">
+            <a href="{{repo.url}}" class="card-header">{{repo.name}}</a>
+            <p class="card-body">{{repo.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
         <div class="card">
-          <h3><strong>{{profile.username}}</strong></h3>
-          <h6><strong>Bio: </strong> <em>{{profile.bio}}</em></h6>
-          <h6><strong>Name: </strong> <em>{{profile.name}}</em></h6>
-          <h6><strong>Repositories: </strong> <em>{{profile.repositories}}</em></h6>
-          <h6><strong>Followers: </strong> <em>{{profile.followers}}</em></h6>
-          <h6><strong>Following: </strong> <em>{{profile.following}}</em></h6>
-          <button class="btn btn-warning"><a [href]="profile.link" target="_blank">Visit GitHub Page</a></button>
+          <h3 class="card-header"><a href="{{profile.html_url}}" target="_blank">{{profile.username}}</a></h3>
+          <div class="card-body">
+            <p>Name: {{profile.name}}. <span class="small">({{profile.username}})</span> </p>
+            <p *ngIf="profile.bio">Bio: {{profile.bio}}</p>
+            <p>Following: {{profile.following}}</p>
+            <p>Followers: {{profile.followers}}</p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="page-wrap d-flex flex-row align-items-center" *ngIf="error">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <span class="display-1 d-block">Error</span>
+          <div class="mb-4 lead">Please Make sure you typed the correct username.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
